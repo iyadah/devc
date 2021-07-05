@@ -66,10 +66,6 @@ router.post('/',[
             
         } );
 
-
-    // Return the jsonwebtoken
-
-        //res.send('User registered successfully: ');
     } catch(err){
         console.error(err.message);
         res.status(500).send('Server error');
