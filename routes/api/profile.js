@@ -95,4 +95,64 @@ router.post('/', [auth, [
 
 });
 
+// @route    GET api/profile/
+// @desc     All profile list
+// @access   Public
+router.get('/', async (req, res) => {
+    try{
+        const profile = await Profile.find().populate('user', ['name', 'avatar']);
+
+        if(!profile){
+            return res.status(400).json({ msg: 'No profiles' })
+        }
+        res.json(profile);
+
+    } catch(err){
+        console.error(err.message);
+        res.status(500).send('Server error');
+    }
+})
+
+// @route    GET api/profile/user/:user_id
+// @desc     Get profile by user id
+// @access   Public
+router.get('/user/:user_id', async (req, res) => {
+    try{
+        const profile = await Profile.findOne({ user: req.params.user_id }).populate('user', ['name', 'avatar']);
+
+        if(!profile){
+            return res.status(400).json({ msg: 'No profile for this user' })
+        }
+
+        res.json(profile);
+
+    } catch(err){
+        if(err.kind == 'ObjectId'){
+            return res.status(400).json({ msg: 'No profile for this user' });
+        }
+        console.error(err.message);
+        res.status(500).send('Server error');
+    }
+})
+
+// @route    Delete api/profile/
+// @desc     Delete a profile
+// @access   Private
+router.delete('/', auth,async (req, res) => {
+    try{
+        // Remove the profile and the user
+        await Profile.findOneAndRemove({ user: req.user_id });
+        await User.findOneAndRemove({ _id: req.user_id });
+
+        res.json({ msg: 'User deleted' });
+        if(!profile){
+            return res.status(400).json({ msg: 'No profiles' })
+        }
+        res.json(profile);
+
+    } catch(err){
+        console.error(err.message);
+        res.status(500).send('Server error');
+    }
+})
 module.exports = router;
