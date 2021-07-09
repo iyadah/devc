@@ -1,0 +1,396 @@
+{
+	"info": {
+		"_postman_id": "7ab054b2-9b6f-4e22-943e-849fc1dc7b92",
+		"name": "MERN",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Hala Thaer\",\n    \"email\": \"hala@ureed.com\",\n    \"password\": \"PassPass\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"iyad.ahmad9@ureed.com\",\n    \"password\": \"PassPass\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/auth",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get auth user",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjBlMzA1MDI4NDM5MjgzMmM5OGQ1MDIyIn0sImlhdCI6MTYyNTQ5MDY5MCwiZXhwIjoxNjI1ODUwNjkwfQ.imhGC3UseNnQd3B627rfDyYbQNZnGPnRV9DlDq_g_Tc",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/auth",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"auth"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Profile",
+			"item": [
+				{
+					"name": "Create update profile",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjBlMzEyZGZjMDU2MWQzNWNlOGZjYmQ3In0sImlhdCI6MTYyNTU1NDU1OSwiZXhwIjoxNjI1OTE0NTU5fQ.u7NQ-3-wXuNU2_x5aY9katF3wdoSTSzWbS4Bpthm5dI",
+								"description": "hala token",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"Developer\",\n    \"skills\": \"HTML, JS, python\"\n    \"social\":{\n        \"youtube\": \"youtube.com\"\n    }\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/profile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "profiles list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/profile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get user profile details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjBlMzEyZGZjMDU2MWQzNWNlOGZjYmQ3In0sImlhdCI6MTYyNTQ5NDI3MiwiZXhwIjoxNjI1ODU0MjcyfQ.A589WcJBbgwls3aCV9E3kO5075IPUvM-YdmZIBEEVXk",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/profile/me",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"profile",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get profile for a specific user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/profile/user/60e312dfc0561d35ce8fcbd78",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"profile",
+								"user",
+								"60e312dfc0561d35ce8fcbd78"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add education to the profile",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjBlMmZlNmQwYjY0ZDEzMTI5MmI4NWE2In0sImlhdCI6MTYyNTgxOTYzNywiZXhwIjoxNjI2MTc5NjM3fQ.dbFm4MonbrxP8GXO-VyG-1DD8xEdrsiPuIo3IDCmTsI",
+								"description": "hala token",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"school\": \"NYiT\",\n    \"degree\": \"MBA\",\n    \"fieldofstudy\": \"MIS\",\n    \"from\": \"08-10-2010\",\n    \"current\": true,\n    \"description\": \"MIS\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/profile/education",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"profile",
+								"education"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete education",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjBlMmZlNmQwYjY0ZDEzMTI5MmI4NWE2In0sImlhdCI6MTYyNTgxOTYzNywiZXhwIjoxNjI2MTc5NjM3fQ.dbFm4MonbrxP8GXO-VyG-1DD8xEdrsiPuIo3IDCmTsI",
+								"description": "hala token",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/profile/education/60e816cbd1a9f67c4118678c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"profile",
+								"education",
+								"60e816cbd1a9f67c4118678c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add experience",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjBlMmZlNmQwYjY0ZDEzMTI5MmI4NWE2In0sImlhdCI6MTYyNTgxOTYzNywiZXhwIjoxNjI2MTc5NjM3fQ.dbFm4MonbrxP8GXO-VyG-1DD8xEdrsiPuIo3IDCmTsI",
+								"description": "hala token",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Principal dev\",\n    \"location\": \"Amman\",\n    \"company\": \"RS\",\n    \"from\": \"08-10-2010\",\n    \"current\": true,\n    \"description\": \"developer of mobile app\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/profile/experience",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"profile",
+								"experience"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete experience from a profile",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjBlMmZlNmQwYjY0ZDEzMTI5MmI4NWE2In0sImlhdCI6MTYyNTgxOTYzNywiZXhwIjoxNjI2MTc5NjM3fQ.dbFm4MonbrxP8GXO-VyG-1DD8xEdrsiPuIo3IDCmTsI",
+								"description": "hala token",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/profile/experience/60e812bca07dfd7b0fec6580",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"profile",
+								"experience",
+								"60e812bca07dfd7b0fec6580"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get github repos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/profile/github/iyadah",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"profile",
+								"github",
+								"iyadah"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "not related",
+			"item": [
+				{
+					"name": "save and get car",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"model_name\": \"Foxe saroo7\", \n    \"model_date\": \"2021-07-02\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/car",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"car"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
