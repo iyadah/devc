@@ -10,7 +10,7 @@ const connectDB = async () => {
             useUnifiedTopology: true,
             useFindAndModify: false
         });
-        console.log('Mongodb connected ...')
+        console.log('Mongodb connected..')
     } catch(err){
         console.error(err.message);
         process.exit(1);
