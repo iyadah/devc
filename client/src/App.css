@@ -322,6 +322,11 @@ button {
   margin: 0 0.25rem;
 }
 
+.navbar img {
+  width: 50;
+  height: 50;
+}
+
 .navbar a:hover {
   color: var(--primary-color);
 }
@@ -329,10 +334,7 @@ button {
 .navbar .welcome span {
   margin-right: 0.6rem;
 }
-.navbar img {
-  position: relative;
-  background: url('img/urood.svg') no-repeat center center/cover;
-}
+
 
 /* Landing Page */
 .landing {
