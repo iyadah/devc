@@ -530,6 +530,7 @@ button {
 
   .navbar h1 {
     margin-bottom: 1rem;
+    text-align: left;
   }
 
   .navbar .welcome {
