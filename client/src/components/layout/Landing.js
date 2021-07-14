@@ -6,10 +6,10 @@ export const Landing = () => {
         <section className="landing">
         <div className="dark-overlay">
           <div className="landing-inner">
-            <h1 className="x-large">Developer Connector</h1>
+            <h1 className="x-large">Urood</h1>
             <p className="lead">
-              Create a developer profile/portfolio, share posts and get help from
-              other developers
+              Create a profile/portfolio, share posts and get help from
+              other Uroods
             </p>
             <div className="buttons">
               <Link to="/register" className="btn btn-primary">Sign Up</Link>
