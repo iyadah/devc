@@ -7,7 +7,7 @@ export const Navbar = () => {
         <nav className="navbar bg-dark">
   {/*    <img src={require('../../img/urood2.png')} style={{height: 60, width: 60,  display: 'block'}} /> */} 
   {/*    <img src={logo} style={{height: 60, width: 60,  display: 'block'}} /> */} {/* This line to import the image from the local assets*/}
-        <img src='https://res.cloudinary.com/dkbror80w/image/upload/v1626271736/img/urood_uyqcxw.svg' style={{height: 60, width: 60,  display: 'block'}} />
+        <img src='https://res.cloudinary.com/dkbror80w/image/upload/v1626271736/img/urood_uyqcxw.svg' style={{height: 60, width: 60,  display: 'block'}} alt="Urood logo" />
         <h1>
           <Link to="/"><i className="fas fa-code"></i> Urood.com</Link>
         </h1>
