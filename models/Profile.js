@@ -86,6 +86,23 @@ const ProfileSchema = new mongoose.Schema({
           }
         }
     ],
+    portfolio: [
+      {
+        title: {
+          type: String,
+          required: true
+        },
+        image: {
+          type: String,
+          required: true
+        },
+        description: {
+          type: String,
+          required: true
+        },
+      }
+  ],
+
     social: {
         youtube: {
           type: String

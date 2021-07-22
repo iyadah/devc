@@ -215,9 +215,7 @@ router.delete('/experience/:exp_id', auth,async (req, res) => {
             return res.json({ profile });
         }
 
-        return res.status(400).send('Experience not found');
-
-        
+        return res.status(400).send('Experience not found'); 
     
     } catch(err){
         console.error(err.message);
@@ -295,6 +293,66 @@ router.delete('/education/:edu_id', auth,async (req, res) => {
         res.status(500).send('Server error');
     }
 });
+
+// @route    Put api/profile/portfolio
+// @desc     Put portfolio to a profile
+// @access   Private
+router.put('/portfolio', [auth, [
+    check('title', 'Title is required').not().isEmpty(),
+    check('image', 'Image is required').not().isEmpty(),
+    check('description', 'Description  is required').not().isEmpty(),
+]], async (req,res) => {
+    const errors = validationResult(req);
+    if(!errors.isEmpty()){
+        return res.status(400).json({ errors: errors.array() });
+    }
+    const {
+        title,
+        image,
+        description,
+    } = req.body;
+
+    const newPortfolio = {
+        title,
+        image,
+        description
+    };
+
+    try {
+        const profile = await Profile.findOne({ user: req.user.id });
+        profile.portfolio.unshift(newPortfolio);
+        await profile.save();
+
+        res.json(profile);
+        
+    } catch (err) {
+        console.log(err.message);
+        res.status(500).send('Server error');
+        
+    }
+});
+// @route    Delete api/profile/portfolio/:portfolio_id
+// @desc     Delete portfolio from a profile
+// @access   Private
+router.delete('/portfolio/:portfolio_id', auth,async (req, res) => {
+    try{
+        // Remove the profile and the user
+        const profile = await Profile.findOne({ user: req.user.id });
+        const removeIndex = profile.portfolio.map(item => item.id).indexOf(req.params.portfolio_id);
+        if(removeIndex!=-1){
+            profile.portfolio.splice(removeIndex, 1);
+            await profile.save();
+            return res.json({ profile });
+        }
+
+        return res.status(400).send('Portfolio not found');  
+    
+    } catch(err){
+        console.error(err.message);
+        res.status(500).send('Server error');
+    }
+});
+
 
 // @route    GET api/profile/github/:username
 // @desc     Get the repos from github based on github user
