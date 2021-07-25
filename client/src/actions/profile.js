@@ -41,7 +41,7 @@ export const createProfile = (formData, history, edit = false) => async dispatch
         });
         
         dispatch(
-            setAlert(edit ? 'Profile updated' : 'Profile created')
+            setAlert(edit ? 'Profile updated' : 'Profile created', 'success')
         );
 
         if(!edit){
