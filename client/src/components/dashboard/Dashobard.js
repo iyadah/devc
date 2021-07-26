@@ -6,7 +6,7 @@ import PrivateRoute from '../routing/PrivateRoute';
 import auth from '../../reducers/auth';
 import Spinner from '../layout/Spinner';
 import { Link } from 'react-router-dom';
-
+import { DashboardActions  } from './DashboardActions';
 
 const Dashobard = ({ getCurrentProfile, auth: {user}, profile: {profile, loading} }) => {
     useEffect(() => {
@@ -19,7 +19,9 @@ const Dashobard = ({ getCurrentProfile, auth: {user}, profile: {profile, loading
            <p className="lead">
                <i className="fas fa-user"> Welcome { user && user.name }</i>
            </p>
-           {profile !== null ? <Fragment>has</Fragment> : 
+           {profile !== null ? <Fragment>
+               <DashboardActions />
+           </Fragment> : 
                 <Fragment>
                     <p>You haven't created a profile!</p>
                     <Link to='/create-profile' className="btn btn-primary my-1">
