@@ -24,7 +24,6 @@ export const Register = ({ setAlert, register, isAuthenticate }) => {
             //console.log('Passwords do not match');
             setAlert('Passwords do not match', 'danger', 500);
         } else{
-            console.log(formData);
             register({ name, email, password });
         }
     }
