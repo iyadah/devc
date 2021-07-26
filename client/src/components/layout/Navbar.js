@@ -6,6 +6,7 @@ import { logout } from '../../actions/auth';
 
 const Navbar = ({ auth: { isAuthenticate }, logout }) => {
   const authLinks = (
+    
     <ul>
       <li>
         <Link to="/profiles">Developers</Link>
@@ -29,6 +30,7 @@ const Navbar = ({ auth: { isAuthenticate }, logout }) => {
   );
 
   const guestLinks = (
+
     <ul>
       <li>
         <Link to="/profiles">Developers</Link>
@@ -40,6 +42,7 @@ const Navbar = ({ auth: { isAuthenticate }, logout }) => {
         <Link to="/login">Login</Link>
       </li>
     </ul>
+    
   );
 
   return (
@@ -50,7 +53,7 @@ const Navbar = ({ auth: { isAuthenticate }, logout }) => {
          Urood
         </Link>
 
-        </h1>
+      </h1>
       <Fragment>{isAuthenticate ? authLinks : guestLinks}</Fragment>
     </nav>
   );
