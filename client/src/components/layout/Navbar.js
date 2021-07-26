@@ -46,7 +46,7 @@ const Navbar = ({ auth: { isAuthenticate }, logout }) => {
   );
 
   return (
-    <nav className="navbar bg-dark">
+    <nav className="navbar bg-blue-200">
       <img src='https://res.cloudinary.com/dkbror80w/image/upload/v1626271736/img/urood_uyqcxw.svg' style={{height: 60, width: 60,  display: 'block'}} alt="Urood logo" />
       <h1>
         <Link to="/">
