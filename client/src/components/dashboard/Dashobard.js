@@ -7,6 +7,8 @@ import auth from '../../reducers/auth';
 import Spinner from '../layout/Spinner';
 import { Link } from 'react-router-dom';
 import { DashboardActions  } from './DashboardActions';
+import Experience from './Experience';
+import Education from './Education';
 
 const Dashobard = ({ getCurrentProfile, auth: {user}, profile: {profile, loading} }) => {
     useEffect(() => {
@@ -21,6 +23,9 @@ const Dashobard = ({ getCurrentProfile, auth: {user}, profile: {profile, loading
            </p>
            {profile !== null ? <Fragment>
                <DashboardActions />
+               <Experience experience={profile.experience} />
+               <Education education={profile.education} />
+
            </Fragment> : 
                 <Fragment>
                     <p>You haven't created a profile!</p>
