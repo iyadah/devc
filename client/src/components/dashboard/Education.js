@@ -2,21 +2,22 @@ import React, { Fragment} from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import Moment from 'react-moment'
+import Moment from 'react-moment';
+import { deleteEducation } from '../../actions/profile';
 
-function Education({ education }) {
+function Education({ education, deleteEducation }) {
     const educations = education.map(exp => (
-        <tr class="bg-gray-800" key={exp._id}>
-            <td class="p-3">{exp.school}</td>
-            <td class="p-3">{exp.title}</td>
-            <td class="p-3">
+        <tr className="bg-gray-800" key={exp._id}>
+            <td className="p-3">{exp.school}</td>
+            <td className="p-3">{exp.title}</td>
+            <td className="p-3">
                 <Moment format='YYYY/MM/DD'>{exp.from}</Moment> - {
                     exp.to === null ? (' Now') : (<Moment format='YYYY/MM/DD'>{exp.to}</Moment>) 
                 }
             </td>
-            <td class="p-3">
-							<a href="#" class="text-gray-400 hover:text-gray-100 ml-2">
-								<i class="material-icons-round text-base">delete_outline</i>
+            <td className="p-3">
+							<a href="#" onClick={() => deleteEducation(exp._id)} className="text-gray-400 hover:text-gray-100 ml-2">
+								<i className="material-icons-round text-base">delete_outline</i>
 							</a>
 			</td>
 
@@ -28,13 +29,13 @@ function Education({ education }) {
             <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
 	rel="stylesheet"></link>
             <h2> Education Cridentials</h2>
-			<table class="table text-gray-400 border-separate space-y-6 text-sm">
-				<thead class="bg-gray-800 text-gray-500">
+			<table className="table text-gray-400 border-separate space-y-6 text-sm">
+				<thead className="bg-gray-800 text-gray-500">
 					<tr>
-						<th class="p-3">Company</th>
-						<th class="p-3 text-left">Title</th>
-						<th class="p-3 text-left">Years</th>
-						<th class="p-3 text-left">Action</th>
+						<th className="p-3">Company</th>
+						<th className="p-3 text-left">Title</th>
+						<th className="p-3 text-left">Years</th>
+						<th className="p-3 text-left">Action</th>
 					</tr>
 				</thead>
 				<tbody >
@@ -48,10 +49,12 @@ function Education({ education }) {
 }
 
 Education.propTypes = {
-    education: PropTypes.array.isRequired
+    education: PropTypes.array.isRequired,
+    deleteEducation: PropTypes.func.isRequired
 
 
 };
 
-export default Education
+export default connect(null, {deleteEducation})(Education)
+
 
