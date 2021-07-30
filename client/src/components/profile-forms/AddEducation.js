@@ -1,6 +1,5 @@
 import React, {Fragment, useState} from 'react';
 import PropTypes from 'prop-types';
-import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addEducation } from '../../actions/profile';
 function AddEducation({ addEducation, history}) {
@@ -16,7 +15,7 @@ function AddEducation({ addEducation, history}) {
 
     const [toDateDisabled, toggleDisabled] = useState(false);
 
-    const {school='', degree='', fieldofstudy='', from='', to='', current, discription=''} = formData;
+    const {school='', degree='', fieldofstudy='', from='', to='', current, description=''} = formData;
 
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -74,7 +73,7 @@ function AddEducation({ addEducation, history}) {
         </div>
         <div class="form-group">
           <textarea
-            name="description"
+            name="description" value={description} onChange={e => onChange(e)}
             cols="30"
             rows="5"
             placeholder="Program Description"

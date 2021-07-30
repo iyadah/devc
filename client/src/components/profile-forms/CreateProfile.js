@@ -5,7 +5,7 @@ import { setAlert } from '../../actions/alert';
 
 
 import { createProfile } from '../../actions/profile';
-import {Link, withRouter} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 const CreateProfile = ({ createProfile, history  }) => {
     const [formData, setFormData] = useState({
@@ -167,9 +167,6 @@ CreateProfile.propTypes = {
     createProfile: PropTypes.func.isRequired
 };
 
-const mapStateToProps = (state) => ({
-  profile: state.profile
-});
 
 export default connect(null, { createProfile, setAlert })(
   CreateProfile

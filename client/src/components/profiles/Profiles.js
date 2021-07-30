@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getProfiles } from '../../actions/profile'
 import ProfileItem from './ProfileItem'
-import profile from '../../reducers/profile';
+
 const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
     useEffect(()=>{
         getProfiles();
-    }, []);
+    }, [getProfiles]);
 
     return (
         <Fragment>

@@ -2,8 +2,6 @@ import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getCurrentProfile } from '../../actions/profile';
-import PrivateRoute from '../routing/PrivateRoute';
-import auth from '../../reducers/auth';
 import Spinner from '../layout/Spinner';
 import { Link } from 'react-router-dom';
 import { DashboardActions  } from './DashboardActions';
@@ -13,7 +11,7 @@ import Education from './Education';
 const Dashobard = ({ getCurrentProfile, auth: {user}, profile: {profile, loading} }) => {
     useEffect(() => {
         getCurrentProfile();
-    }, []);
+    }, [getCurrentProfile]);
 
     return (
        loading && profile == null ? <Spinner /> : <Fragment>  

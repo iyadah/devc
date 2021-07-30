@@ -1,7 +1,6 @@
 import React, { Fragment} from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 import { deleteEducation } from '../../actions/profile';
 
@@ -16,7 +15,7 @@ function Education({ education, deleteEducation }) {
                 }
             </td>
             <td className="p-3">
-							<a href="#" onClick={() => deleteEducation(exp._id)} className="text-gray-400 hover:text-gray-100 ml-2">
+							<a href="!#" onClick={() => deleteEducation(exp._id)} className="text-gray-400 hover:text-gray-100 ml-2">
 								<i className="material-icons-round text-base">delete_outline</i>
 							</a>
 			</td>

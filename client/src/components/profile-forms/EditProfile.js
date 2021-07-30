@@ -5,7 +5,7 @@ import { setAlert } from '../../actions/alert';
 
 
 import { createProfile, getCurrentProfile } from '../../actions/profile';
-import {Link, withRouter} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 const EditProfile = ({ profile: {profile, loading}, createProfile, getCurrentProfile, history  }) => {
     const [formData, setFormData] = useState({
@@ -40,7 +40,7 @@ const EditProfile = ({ profile: {profile, loading}, createProfile, getCurrentPro
             youtube: loading || !profile.social.youtube ? '' : profile.social.youtube,
             instagram: loading || !profile.social.instagram ? '' : profile.social.instagram
         });
-    }, [loading]);
+    }, []);
 
     const {
         company='',
