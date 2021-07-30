@@ -1,24 +1,29 @@
-import React, { Fragment, useEffect } from 'react';
-import Spinner from '../layout/Spinner';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { getProfiles } from '../../actions/profile'
-const profileItem = props => {
+import { Link } from 'react-router-dom';
+
+const profileItem = ({profile: {user:{_id, name,avatar}, status, company, location, skills}}) => {
     return (
-        <div>
-            
+        <div className="profile bg-light">
+            <img src={avatar} />
+            <div>{name}</div>
+            <div>{status}</div>
+            <div>{company}</div>
+            <div>{location}</div>
+            <div><Link to={`/profile/${_id}`}>view profile</Link></div>
+            <ul>
+                {skills.slice(0,4).map((skill, index)=>(
+                    <li key={index} className="text-primary">
+                        {skill}
+                    </li>
+                ))}
+            </ul>
         </div>
     )
 }
 
 profileItem.propTypes = {
-    getProfiles: PropTypes.func.isRequired,
     profile: PropTypes.object.isRequired
-
 }
 
-const mapStateToProps = state => ({
-    profile: profile.state
-})
-
-export default connect(mapStateToProps, {getProfiles})(profileItem);
+export default profileItem

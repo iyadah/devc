@@ -3,6 +3,8 @@ import Spinner from '../layout/Spinner';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getProfiles } from '../../actions/profile'
+import ProfileItem from './ProfileItem'
+import profile from '../../reducers/profile';
 const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
     useEffect(()=>{
         getProfiles();
@@ -13,7 +15,11 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
             {loading ? <Spinner /> : <Fragment>
                 <h1> Developers</h1>
                 <div className="profiles">
-                    {profiles.length > 0 ? <h4> a </h4> : <h4> No profiles...</h4>}
+                    {
+                    profiles.length > 0 ? (
+                        profiles.map(profile=>(<ProfileItem key={profile._id} profile={profile} />
+                    ))): <h4> No profiles...</h4>
+                }
                 </div>
                 </Fragment>}
             
