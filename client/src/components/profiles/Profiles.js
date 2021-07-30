@@ -9,9 +9,15 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
     }, []);
 
     return (
-        <div>
+        <Fragment>
+            {loading ? <Spinner /> : <Fragment>
+                <h1> Developers</h1>
+                <div className="profiles">
+                    {profiles.length > 0 ? <h4> a </h4> : <h4> No profiles...</h4>}
+                </div>
+                </Fragment>}
             
-        </div>
+        </Fragment>
     )
 }
 ;
