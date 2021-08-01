@@ -8,11 +8,12 @@ const Posts = ({ getPosts, post: {posts, loading}}) => {
     useEffect(()=>{
         getPosts();
     }, [getPosts]);
-    return (
-        <div>
-            
-        </div>
-    )
+
+    return loading ? <Spinner /> : (
+        <Fragment>
+            test
+        </Fragment>
+    );
 }
 
 Posts.propTypes = {
