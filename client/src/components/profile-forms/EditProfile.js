@@ -40,7 +40,7 @@ const EditProfile = ({ profile: {profile, loading}, createProfile, getCurrentPro
             youtube: loading || !profile.social.youtube ? '' : profile.social.youtube,
             instagram: loading || !profile.social.instagram ? '' : profile.social.instagram
         });
-    }, []);
+    }, [loading]);
 
     const {
         company='',
