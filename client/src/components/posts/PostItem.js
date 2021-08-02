@@ -22,7 +22,7 @@ const PostItem = ({ auth, post: {_id, text, name, avatar, user, likes, comments,
         {text}
       </p>
        <p class="post-date">
-          <Moment format='yyyy/mm/dd'>{date}</Moment>
+          <Moment format='YYYY-MM-DD HH:mm' date={date}></Moment>
       </p>
       <button type="button" class="btn btn-light">
         <i class="fas fa-thumbs-up"></i>
@@ -34,7 +34,7 @@ const PostItem = ({ auth, post: {_id, text, name, avatar, user, likes, comments,
       <a href="post.html" class="btn btn-primary">
         Discussion <span class='comment-count'>{comments.length}</span>
       </a>
-      {!auth.loading && user._id===auth.user._id &&(
+      {!auth.loading && user === auth.user._id && (
       <button      
       type="button"
       class="btn btn-danger">
