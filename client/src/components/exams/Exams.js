@@ -8,7 +8,7 @@ import { getExams } from '../../actions/exam'
 const Exams = ({ getExams, exam: { exams, loading } }) => {
     useEffect(() => {
         getExams();
-    }, [getExams])
+    }, [getExams]);
     return (
         <div>
             <h1>Exam list</h1>
@@ -16,9 +16,11 @@ const Exams = ({ getExams, exam: { exams, loading } }) => {
                     {
                     exams.length > 0 ? (
                         exams.map(exam=>(<ExamItem key={exam._id} exam={exam} />
+                        
                         //exams.map(exam=>(<h1>{exam.description}</h1> 
                     ))): <h4> No Exams...</h4>
                 }
+
             </div>
 
         </div>
