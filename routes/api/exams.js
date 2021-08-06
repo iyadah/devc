@@ -50,4 +50,47 @@ router.get('/', async (req,res) => {
 
 });
 
+// @route    Question api/exams/question/:id
+// @desc     Add question to a exam
+// @access   Public
+router.post('/question/:id', [ 
+    check('typeOfQuestion', 'typeOfQuestion is required').not().isEmpty(),
+    check('title', 'title is required').not().isEmpty(),
+    check('description', 'description is required').not().isEmpty() ], 
+    async (req,res) => {
+    const errors = validationResult(req);
+    if(!errors.isEmpty()){
+        return res.status(400).json({ errors: errors.array()});
+    }
+
+    try {
+        const exam = await Exam.findById(req.params.id);
+        //check if the quesiton has been entered before
+        const questions = exam.question;
+        let question = questions.find(o => o.title === req.body.title);
+        if(question){
+            return res.status(400).json({ errors: [ { msg: 'this question exists'} ] }); 
+        }
+        const newQuestion = {
+            typeOfQuestion: req.body.typeOfQuestion,
+            title: req.body.title,
+            description: req.body.description,
+            timeInSeconds: req.body.timeInSeconds,
+            options: req.body.options,
+            answer: req.body.answer
+        }
+
+        exam.question.unshift(newQuestion);
+        await exam.save();
+        res.json(exam.question);
+
+     } catch (err) {
+         console.log(err.message);
+         res.status(500).send('Server error');
+
+     }
+
+});
+
+
 module.exports = router;
