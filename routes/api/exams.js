@@ -50,6 +50,27 @@ router.get('/', async (req,res) => {
 
 });
 
+// @route    Get api/exams/:id
+// @desc     Get exam by id
+// @access   Public
+
+router.get('/:id', async (req, res) => {
+    try{
+        const exam = await Exam.findById(req.params.id);
+
+        if(!exam){
+            return res.status(400).json({ msg: 'No exam with this id' })
+        }
+
+        res.json(exam);
+
+    } catch(err){
+            return res.status(400).json({ msg: 'Not found' });
+        console.error(err.message);
+        res.status(500).send('Server error');
+    }
+});
+
 // @route    Question api/exams/question/:id
 // @desc     Add question to a exam
 // @access   Public

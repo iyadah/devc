@@ -9,6 +9,9 @@ export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const LOGOUT = 'LOGOUT';
 export const GET_PROFILE = 'GET_PROFILE';
 export const GET_PROFILES = 'GET_PROFILES';
+export const GET_EXAMS = 'GET_EXAMS';
+export const EXAM_ERROR = 'EXAM_ERROR';
+
 export const GET_REPOS = 'GET_REPOS';
 export const GET_POSTS = 'GET_POSTS';
 export const POST_ERROR = 'POST_ERROR';
