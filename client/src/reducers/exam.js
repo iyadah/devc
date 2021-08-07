@@ -1,4 +1,4 @@
-import { GET_EXAMS, EXAM_ERROR } from "../actions/types";
+import { GET_EXAMS, EXAM_ERROR, GET_EXAM } from "../actions/types";
 
 const initialState = {
     exam: null,
@@ -15,6 +15,12 @@ export default function(state = initialState, action){
             return{
                 ...state,
                 exams: payload,
+                loading: false
+            };
+        case GET_EXAM:
+             return{
+                ...state,
+                exam: payload,
                 loading: false
             };
         case EXAM_ERROR:

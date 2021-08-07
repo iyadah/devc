@@ -14,6 +14,7 @@ import PrivateRoute from './components/routing/PrivateRoute';
 import Profile from './components/profile/Profile';
 import Posts from './components/posts/Posts';
 import Exams from './components/exams/Exams';
+import Exam from './components/exams/Exam';
 
 import { loadUser } from './actions/auth';
 
@@ -54,6 +55,7 @@ return(
        <PrivateRoute exact path='/add-education' component={ AddEducation } />
        <PrivateRoute exact path='/posts' component={ Posts } />
        <PrivateRoute exact path='/exams' component={ Exams } />
+       <PrivateRoute exact path='/exam/:id' component={ Exam } />
 
       </Switch>
     </section>

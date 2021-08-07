@@ -2,11 +2,11 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const examItem = ({exam: {title, description, numberOfQuestions, question}}) => {
+const examItem = ({exam: {_id, title, description, numberOfQuestions, question}}) => {
     return (
         <div>
         <div className="bg-light">
-            <div>Title: {title}</div>
+            <div>Title: <Link to={`/exam/${_id}`}>{title}</Link></div>
             <div>Description: {description}</div>
             <div># of Questions: {numberOfQuestions}</div>
             <div>Current questions #: {question.length}</div>
