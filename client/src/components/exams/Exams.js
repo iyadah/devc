@@ -6,6 +6,7 @@ import ExamItem from './ExamItem';
 import { getExams } from '../../actions/exam'
 
 const Exams = ({ getExams, exam: { exams, loading } }) => {
+
     useEffect(() => {
         getExams();
     }, [getExams]);

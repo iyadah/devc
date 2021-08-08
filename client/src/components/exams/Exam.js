@@ -6,18 +6,11 @@ import Spinner from '../layout/Spinner';
 import { getExamById } from '../../actions/exam';
 
 const Exam = ({ getExamById, exam: { exam, loading }, match }) => {
-    const [formData, setFormData] = useState({
-        title: '',
-        id: ''
-    });
+
 
   useEffect(() => {
     getExamById(match.params.id);
-    setFormData({
-        title: loading || !exam.title ? '' : exam.title
-
-    },[loading]);
-
+  
   }, [getExamById, match.params.id]);
 
   function questionType(type){
@@ -32,13 +25,11 @@ const Exam = ({ getExamById, exam: { exam, loading }, match }) => {
               return "textarea"
       }
   }
-  const  {
-    title=''
-  } = formData;
+
 
 
   const onSubmit = (e) => {
-    console.log(formData); 
+    console.log(); 
     return;
   };
   return (

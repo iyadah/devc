@@ -1,5 +1,5 @@
 {
-    "mongoURI": "mongodb://username:password@192.168.64.2:30012/admin",    
+    "mongoURI": "mongodb+srv://iyad:iyad@cluster0.sl7cw.mongodb.net/myFirstDatabase",    
     "jwtSecret": "Whyme@123",
     "githubClientId": "95a976a695027691f8b3",
     "githubSecret": "f019d8d0fed2e7b87ec9b8f5e2fd5e2ce29cb719"
