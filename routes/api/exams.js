@@ -89,9 +89,6 @@ router.post('/question/:id', [
         //check if the quesiton has been entered before
         const questions = exam.question;
         let question = questions.find(o => o.title === req.body.title);
-        if(question){
-            return res.status(400).json({ errors: [ { msg: 'this question exists'} ] }); 
-        }
         const newQuestion = {
             typeOfQuestion: req.body.typeOfQuestion,
             title: req.body.title,
@@ -100,8 +97,14 @@ router.post('/question/:id', [
             options: req.body.options,
             answer: req.body.answer
         }
+        if(question){
+
+           return res.status(400).json({ errors: [ { msg: 'this question exists'} ] }); 
+        }
+
 
         exam.question.unshift(newQuestion);
+        
         await exam.save();
         res.json(exam.question);
 
