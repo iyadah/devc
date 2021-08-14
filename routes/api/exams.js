@@ -99,7 +99,17 @@ router.post('/question/:id', [
         }
         if(question){
 
-           return res.status(400).json({ errors: [ { msg: 'this question exists'} ] }); 
+                await Exam.findById(req.params.id).then( exam2 => {
+                let findQ = exam2.question.id(question._id);
+                
+                findQ = newQuestion;
+                return exam2.save();
+                
+            });
+
+
+            return res.json(exam);
+           // return res.status(400).json({ errors: [ { msg: 'this question exists'} ] }); 
         }
 
 
