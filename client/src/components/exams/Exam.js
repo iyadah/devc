@@ -29,7 +29,7 @@ const Exam = ({ getExamById, exam: { exam, loading }, match }) => {
 
 
   const onSubmit = (e) => {
-    console.log(); 
+    console.log(e); 
     return;
   };
   return (

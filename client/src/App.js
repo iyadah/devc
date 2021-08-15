@@ -15,6 +15,7 @@ import Profile from './components/profile/Profile';
 import Posts from './components/posts/Posts';
 import Exams from './components/exams/Exams';
 import Exam from './components/exams/Exam';
+import FormicSh from './components/exams/FormicSh';
 
 import { loadUser } from './actions/auth';
 
@@ -47,6 +48,8 @@ return(
        <Route exact path='/login' component={ Login } />
        <Route exact path='/profiles' component={ Profiles } />
        <Route exact path='/profile/:id' component={ Profile } />
+       <Route exact path='/formic' component={ FormicSh } />
+
 
        <PrivateRoute exact path='/dashboard' component={ Dashboard } />
        <PrivateRoute exact path='/create-profile' component={ CreateProfile } />
