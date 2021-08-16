@@ -1,10 +1,9 @@
 import React from "react"
 import {Link} from "gatsby"
-import Navbar from "../components/Navbar"
-
+import Layout from "../components/Layout"
+import {ExBut}  from "../components/button"
 export default function Home() {
-  return <div>
-        <Navbar />
+  return <Layout>
     Hello world!
 
     <div>
@@ -13,5 +12,7 @@ export default function Home() {
     <div>
     <Link to="/company/history">history</Link>
     </div>
-  </div>
+
+    <ExBut>Click here</ExBut>
+  </Layout>
 }
