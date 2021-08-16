@@ -1,3 +1,4 @@
 node_modules/
 client/node_modules/
 gql-server/node_modules/
+gatsby/tst/node_modules/
