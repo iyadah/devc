@@ -31,7 +31,9 @@ router.post('/', [auth, [
     check('title', 'title is required').not().isEmpty(),
     check('price', 'price is required').not().isEmpty(),
     check('image', 'image is required').not().isEmpty(),
+    check('serviceDeliveryDay', 'serviceDeliveryDay is required').not().isEmpty(),
     check('serviceDeliveryDay', 'serviceDeliveryDay is required').not().isEmpty()
+
 ]], async (req, res) => {
     const errors = validationResult(req);
     if(!errors.isEmpty()){
@@ -53,8 +55,8 @@ router.post('/', [auth, [
     if(description) serviceFields.description = description;
     if(image) serviceFields.image = image;
     if(price) serviceFields.price = price;
-    if(serviceDeliveryDay) serviceFields.serviceDeliveryDay = serviceDeliveryDay;
-    if(serviceDeliveryHour) serviceFields.serviceDeliveryHour = serviceDeliveryHour;
+    if(serviceDeliveryDay>=0) serviceFields.serviceDeliveryDay = serviceDeliveryDay;
+    if(serviceDeliveryHour>=0) serviceFields.serviceDeliveryHour = serviceDeliveryHour;
 
  
     try{
