@@ -11,12 +11,11 @@ const { check, validationResult } = require('express-validator');
 // @access   Public
 router.get('/', auth, async (req, res) => {
     try{
-        const service = await Service.findOne({ user: req.user.id }).populate('user', ['name', 'avatar']);
+        const service = await Service.find({ user: req.user.id }).populate('user', ['name', 'avatar']);
 
         if(!service){
             return res.status(400).json({ msg: 'No service for this user' })
         }
-        setTimeout(() => res.json(profile), 2000);
         res.json(service);
 
     } catch(err){
@@ -32,9 +31,7 @@ router.post('/', [auth, [
     check('title', 'title is required').not().isEmpty(),
     check('price', 'price is required').not().isEmpty(),
     check('image', 'image is required').not().isEmpty(),
-    check('serviceDeliveryDay', 'serviceDeliveryDay is required').not().isEmpty(),
-    check('serviceDeliveryHour', 'serviceDeliveryHour is required').not().isNumeric()
-
+    check('serviceDeliveryDay', 'serviceDeliveryDay is required').not().isEmpty()
 ]], async (req, res) => {
     const errors = validationResult(req);
     if(!errors.isEmpty()){
@@ -49,7 +46,7 @@ router.post('/', [auth, [
         serviceDeliveryDay,
         serviceDeliveryHour
     } = req.body;
-    // Build profile object
+    // Build service object
     const serviceFields = {};
     serviceFields.user = req.user.id;
     if(title) serviceFields.title = title;
@@ -61,11 +58,11 @@ router.post('/', [auth, [
 
  
     try{
-        let service = await Service.findOne({ title:req.title }, {});
+        let service = await Service.findOne({ title:req.body.title }, {});
         if(service){
            // Update
            service = await Service.findOneAndUpdate(
-               { title:req.title }, 
+               { _id:service._id }, 
                { $set: serviceFields },
                { $new: true });
            return res.json(service);
