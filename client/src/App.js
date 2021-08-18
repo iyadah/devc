@@ -16,6 +16,7 @@ import Posts from './components/posts/Posts';
 import Exams from './components/exams/Exams';
 import Exam from './components/exams/Exam';
 import FormicSh from './components/exams/FormicSh';
+import Services from './components/services/Services';
 
 import { loadUser } from './actions/auth';
 
@@ -59,6 +60,8 @@ return(
        <PrivateRoute exact path='/posts' component={ Posts } />
        <PrivateRoute exact path='/exams' component={ Exams } />
        <PrivateRoute exact path='/exam/:id' component={ Exam } />
+       <PrivateRoute exact path='/services' component={ Services } />
+
 
       </Switch>
     </section>
