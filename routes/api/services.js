@@ -80,5 +80,22 @@ router.post('/', [auth, [
     }
 });
 
+// @route    Get api/services/:id
+// @desc     Get service by id
+// @access   Public
+
+router.get('/:serviceId', async (req, res) => {
+    try{
+        const service = await Service.findById(req.params.serviceId);
+        if(!service){
+            return res.status(400).json({ msg: 'No service with this serviceId' })
+        }
+
+        res.json(service);
+
+    } catch(err){
+            return res.status(400).json({ msg: 'Not found' });
+    }
+});
 
 module.exports = router;
