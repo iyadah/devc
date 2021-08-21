@@ -17,6 +17,7 @@ import Exams from './components/exams/Exams';
 import Exam from './components/exams/Exam';
 import FormicSh from './components/exams/FormicSh';
 import Services from './components/services/Services';
+import CreateService from './components/service-forms/CreateService';
 
 import { loadUser } from './actions/auth';
 
@@ -54,6 +55,8 @@ return(
 
        <PrivateRoute exact path='/dashboard' component={ Dashboard } />
        <PrivateRoute exact path='/create-profile' component={ CreateProfile } />
+       <PrivateRoute exact path='/create-service' component={ CreateService } />
+
        <PrivateRoute exact path='/edit-profile' component={ EditProfile } />
        <PrivateRoute exact path='/add-experience' component={ AddExperience } />
        <PrivateRoute exact path='/add-education' component={ AddEducation } />

@@ -1,4 +1,4 @@
-import { GET_SERVICES, SERVICE_ERROR } from "../actions/types";
+import { GET_SERVICES, SERVICE_ERROR, GET_SERVICE } from "../actions/types";
 
 const initialState = {
     service: null,
@@ -18,6 +18,12 @@ export default function(state = initialState, action){
                 loading: false
             };
  
+        case GET_SERVICE:
+            return{
+                ...state,
+                profiles: payload,
+                loading: false
+            }
         case SERVICE_ERROR:
             return{
                 ...state,
