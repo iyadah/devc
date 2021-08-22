@@ -59,8 +59,9 @@ router.post('/', [auth, [
     if(serviceDeliveryHour>=0) serviceFields.serviceDeliveryHour = serviceDeliveryHour;
 
  
-    try{
-        let service = await Service.findOne({ title:req.body.title }, {});
+    try{        
+        let service = await Service.findOne({ user: req.user.id, title:req.body.title }, {});
+
         if(service){
            // Update
            service = await Service.findOneAndUpdate(
