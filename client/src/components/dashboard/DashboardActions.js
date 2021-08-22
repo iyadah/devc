@@ -16,6 +16,10 @@ export const DashboardActions = () => {
             <i className="fas fa-graduation-cap text-primary"></i> 
             <span className="text-white">Add Education</span>
         </Link>
+        <Link to="/create-service" className="bg-gray-500 hover:bg-gray-700" >
+            <i className="fas fa-graduation-cap text-primary"></i> 
+            <span className="text-white">Add Service</span>
+        </Link>
       </div>
     )
 }

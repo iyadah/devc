@@ -30,7 +30,8 @@ const MyServices = ({ getMyServices, service: { services, loading }}) => {
                     <tr className="bg-gray-800" key={service._id}>
             <td className="p-3">{service.title}</td>
             <td className="p-3">{service.price}</td>
-            <td className="p-3">{service.serviceDeliveryDay}- days, and {service.serviceDeliveryDay}- hours</td>
+            <td className="p-3"> {service.serviceDeliveryDay===0 ? "" :service.serviceDeliveryDay || "-, and" } {service.serviceDeliveryDay===1 ? "day " : service.serviceDeliveryDay===0 ? "" : "days "}  
+                                {service.serviceDeliveryHour===0 ? "" : service.serviceDeliveryHour===1 ? "1 hour" : service.serviceDeliveryHour + ' hours'}</td>
 
             <td className="p-3">
 							<a href="!#" onClick={() => deleteService(service._id)} className="text-gray-400 hover:text-gray-100 ml-2">
