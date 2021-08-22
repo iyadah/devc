@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { DashboardActions  } from './DashboardActions';
 import Experience from './Experience';
 import Education from './Education';
+import MyServices from './MyServices';
 
 const Dashobard = ({ getCurrentProfile, auth: {user}, profile: {profile, loading} }) => {
     useEffect(() => {
@@ -23,6 +24,7 @@ const Dashobard = ({ getCurrentProfile, auth: {user}, profile: {profile, loading
                <DashboardActions />
                <Experience experience={profile.experience} />
                <Education education={profile.education} />
+               <MyServices />
 
            </Fragment> : 
                 <Fragment>

@@ -1,4 +1,4 @@
-import { GET_SERVICES, SERVICE_ERROR, GET_SERVICE } from "../actions/types";
+import { GET_SERVICES, SERVICE_ERROR, GET_SERVICE, GET_MYSERVICES } from "../actions/types";
 
 const initialState = {
     service: null,
@@ -12,6 +12,8 @@ export default function(state = initialState, action){
     switch(type){
 
         case GET_SERVICES:
+        case GET_MYSERVICES:
+
             return{
                 ...state,
                 services: payload,

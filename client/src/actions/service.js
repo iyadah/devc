@@ -1,4 +1,4 @@
-import { GET_SERVICES, SERVICE_ERROR, GET_SERVICE } from "./types";
+import { GET_SERVICES, SERVICE_ERROR, GET_SERVICE, GET_MYSERVICES } from "./types";
 import { setAlert } from "./alert";
 import axios from 'axios';
 
@@ -21,6 +21,40 @@ export const getServices = () => async (dispatch) => {
       });
     }
   };
+
+// Get all services for a user
+  export const getMyServices = () => async (dispatch) => {
+  
+    try {
+      const res = await axios.get('/api/services/me');
+      console.log(res);
+      dispatch({
+        type: GET_MYSERVICES,
+        payload: res.data
+      });
+
+    } catch (err) {
+      dispatch({
+        type: SERVICE_ERROR,
+        payload: { msg: err.response.statusText, status: err.response.status }
+      });
+    }
+  };
+
+  export const deleteService = (id) => async (dispatch) => {
+    try {
+    //  const res = await axios.delete(`/api/profile/service/${id}`);
+  
+  
+      dispatch(setAlert('Experience Removed', 'success'));
+    } catch (err) {
+      dispatch({
+        type: SERVICE_ERROR,
+        payload: { msg: err.response.statusText, status: err.response.status }
+      });
+    }
+  };
+  
 
 
   export const getServiceById = (serviceId) => async (dispatch) => {

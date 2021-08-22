@@ -16,6 +16,7 @@ export const GET_EXAM = 'GET_EXAM';
 
 export const GET_SERVICES = 'GET_SERVICES';
 export const GET_SERVICE = 'GET_SERVICE';
+export const GET_MYSERVICES = 'GET_MYSERVICES';
 
 export const SERVICE_ERROR = 'SERVICE_ERROR';
 

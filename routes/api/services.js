@@ -7,11 +7,29 @@ const { check, validationResult } = require('express-validator');
 
 
 // @route    GET api/services
-// @desc     Test route
+// @desc     For specific user
 // @access   Public
-router.get('/', auth, async (req, res) => {
+router.get('/me', auth, async (req, res) => {
     try{
         const service = await Service.find({ user: req.user.id }).populate('user', ['name', 'avatar']);
+
+        if(!service){
+            return res.status(400).json({ msg: 'No service for this user' })
+        }
+        res.json(service);
+
+    } catch(err){
+        console.error(err.message);
+        res.status(500).send('Server error');
+    }
+});
+
+// @route    GET api/services
+// @desc     Get all services
+// @access   Public
+router.get('/', async (req, res) => {
+    try{
+        const service = await Service.find({}).populate('user', ['name', 'avatar']);
 
         if(!service){
             return res.status(400).json({ msg: 'No service for this user' })

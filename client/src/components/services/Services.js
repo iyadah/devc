@@ -2,7 +2,6 @@ import React, {useEffect} from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import {getServices} from '../../actions/service'
-import service from '../../reducers/service'
 import { Link } from 'react-router-dom'
 
 const Services = ({ getServices, service: { services, loading }}) => {
@@ -19,7 +18,7 @@ const Services = ({ getServices, service: { services, loading }}) => {
             </Link>
             </div>
             Services list
-            {services.map(service => (<div><h1>{service.title}</h1><img src={service.image}></img></div>))}
+            {services.map(service => (<div><h1>{service.title} <h2>({service.user.name})</h2></h1><img src={service.image}></img></div>))}
 
         </div>
     )
