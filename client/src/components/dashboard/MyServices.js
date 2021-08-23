@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getMyServices, deleteService } from "../../actions/service";
-import { Link } from "react-router-dom";
 
 const MyServices = ({ getMyServices, service: { services, loading } }) => {
   useEffect(() => {
@@ -25,17 +24,20 @@ const MyServices = ({ getMyServices, service: { services, loading } }) => {
         {services.map((service) => (
           <tr className="bg-gray-800" key={service._id}>
             <td className="p-4">
-              <div class="grid grid-cols-2 divide-x divide-green-500">
+              <div class="grid grid-cols-2 divide-x divide-green-800">
                 <div>
                   <img
                     className="inline object-cover h-8 rounded-full"
                     src={
                       service.image + "?auto=compress&cs=tinysrgb&h=650&w=940"
                     }
-                    alt="Service image"
+                    alt="Service"
                   />
                 </div>
-                <div>{service.title}</div>
+                <div>
+                  &nbsp;
+                  {service.title}
+                </div>
               </div>
             </td>
             <td className="p-4">{service.price}</td>
