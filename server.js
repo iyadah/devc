@@ -1,12 +1,47 @@
 const express = require("express");
+const elasticsearch = require("elasticsearch");
 
-const connectDB = require("./config/db");
+const connectDBES = require("./config/db");
+
 var cors = require("cors");
 
 const app = express();
 
 // connect to db
-connectDB();
+connectDBES.connectDB();
+
+const connectES = async () => {
+  try {
+    const client = await new elasticsearch.Client({
+      hosts: ["http://localhost:9200"],
+    });
+    client.ping({
+      requestTimeout: 30000,
+    });
+    client.index(
+      {
+        index: "comments",
+        id: "1",
+        type: "comments",
+        body: {
+          PostName: "Integrating Elasticsearch Into Your Node.js Application",
+          PostType: "Tutorial",
+          PostBody:
+            "This is the text of our tutorial about using Elasticsearch in your Node.js application.",
+        },
+      },
+      function (err, resp, status) {
+        console.log(resp);
+      }
+    );
+    console.log("ES connected..");
+  } catch (err) {
+    console.error(err.message);
+    process.exit(1);
+  }
+};
+
+connectES();
 
 app.get("/", (req, res) => res.send("API RUNNING"));
 
