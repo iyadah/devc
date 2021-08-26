@@ -2,7 +2,11 @@ const express = require("express");
 const elasticsearch = require("elasticsearch");
 const tests = require("./models/Test");
 const connectDBES = require("./config/db");
-
+/* To do:
+1. Add pusher keys to the configuration
+2. import it
+3. Split the mongodb changeStream
+*/
 const Pusher = require("pusher");
 
 const pusher = new Pusher({
