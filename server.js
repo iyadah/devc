@@ -1,7 +1,18 @@
 const express = require("express");
 const elasticsearch = require("elasticsearch");
-
+const tests = require("./models/Test");
 const connectDBES = require("./config/db");
+
+const Pusher = require("pusher");
+
+const pusher = new Pusher({
+  appId: "1255243",
+  key: "50620317c3650858972b",
+  secret: "453c7370afb969c21e80",
+  cluster: "ap2",
+  useTLS: true,
+});
+const channel = "tests";
 
 var cors = require("cors");
 
@@ -54,6 +65,30 @@ app.use(
     origin: "*",
   })
 );
+
+const changeStream = tests.watch();
+changeStream.on("change", (change) => {
+  console.log(change);
+
+  if (change.operationType === "insert") {
+    const comment = change.fullDocument;
+    pusher.trigger(channel, "inserted", {
+      id: comment._id,
+      comment: comment.comment,
+    });
+  } else if (change.operationType === "delete") {
+    pusher.trigger(channel, "deleted", change.documentKey._id);
+  } else if (change.operationType === "update") {
+    const comment = change.updateDescription;
+    if (comment.updatedFields.hasOwnProperty("comment")) {
+      console.log(comment.updatedFields.comment);
+      pusher.trigger(channel, "update", {
+        id: change.documentKey._id,
+        comment: comment.updatedFields.comment,
+      });
+    }
+  }
+});
 
 app.use("/api/users", require("./routes/api/users"));
 app.use("/api/auth", require("./routes/api/auth"));
